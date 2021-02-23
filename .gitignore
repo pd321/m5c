@@ -7,7 +7,8 @@
 !workflow/**
 !.gitattributes
 !.editorconfig
-!.test/resources/**
+!.test/resources/fq/*
+!.test/resources/fa/*
 !.test/config/**
 !.test/*
 !LICENSE

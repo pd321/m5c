@@ -3,8 +3,9 @@ samples: "config/samples.tsv"
 threads: 2
 
 meRanT:
-  id2gene: "path/to/id2gene"
-  bsidx: "path/to/bsidx"
+  id2gene: "resources/id2gene/mm10.refSeqRNA-noPRED.500.t2g.map"
+  bsidx: "resources/mkbsidx/mm10.refSeqRNA-noPRED.500_C2T"
 
 meRanCall:
-  transcript_fasta: "path/to/transcript.fasta"
+  transcript_fasta: "resources/fa/mm10.refSeqRNA-noPRED.500.fa"
+

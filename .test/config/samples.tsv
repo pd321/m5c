@@ -1,2 +1,2 @@
 sample	r1	r2
-clean_KHOD	resources/fq/clean_KHOD_400k_test.r1.fq.gz	resources/fq/clean_KHOD_400k_test.r2.fq.gz
+rnaBSseq	resources/fq/rnaBSseq_pe_fwd.subset.fastq.gz	resources/fq/rnaBSseq_pe_rev.subset.fastq.gz
