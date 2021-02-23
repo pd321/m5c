@@ -8,6 +8,20 @@ type: object
 properties:
   samples:
     type: string
+  threads:
+    type: integer
+  meRanT:
+    type: object
+    properties:
+      id2gene:
+        type: string
+      bsidx:
+        type: string
+  meRanCall:
+    type: object
+    properties:
+      transcript_fasta: 
+        type: string
 
 # entries that have to be in the config file for successful validation
 required:
