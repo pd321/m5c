@@ -1,6 +1,6 @@
 # Snakemake workflow: m5c
 
-Snakemake workflow for m5c data analysis using mRantk.
+Snakemake workflow for m5c data analysis using meRantk.
 
 ## DAG
 
