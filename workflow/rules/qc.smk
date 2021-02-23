@@ -4,6 +4,8 @@ rule fastqc:
     output:
         html="results/qc/fastqc/{sample}.{read}_fastqc.html",
         zip="results/qc/fastqc/{sample}.{read}_fastqc.zip"
+    log:
+        "logs/fastqc/{sample}.{read}.log"
     threads: max_threads/2 
     wrapper:
         "0.72.0/bio/fastqc"
