@@ -1,0 +1,10 @@
+samples: "config/samples.tsv"
+
+threads: 2
+
+meRanT:
+  id2gene: "path/to/id2gene"
+  bsidx: "path/to/bsidx"
+
+meRanCall:
+  transcript_fasta: "path/to/transcript.fasta"
