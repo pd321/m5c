@@ -1,0 +1,7 @@
+name: merantk
+channels:
+ - conda-forge
+ - bioconda
+ - defaults
+dependencies:
+ - perl-gdgraph = 1.54

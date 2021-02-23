@@ -13,4 +13,4 @@ mbias_plots = expand(["results/plots/mbias/{sample}_m-bias_fwd.png", "results/pl
 
 rule all:
     input:
-        output = calls + fastqc + mbias_plots
+        output = calls + fastqc
