@@ -7,7 +7,6 @@
 !workflow/**
 !.gitattributes
 !.editorconfig
-!.travis.yml
 !.test/**
 !LICENSE
 !README.md
