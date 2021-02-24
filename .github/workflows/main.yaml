@@ -10,6 +10,6 @@ jobs:
     - name: Lint workflow
       uses: snakemake/snakemake-github-action@v1.5.3
       with:
-        directory: .
+        directory: .test
         snakefile: workflow/Snakefile
         args: "--lint"
