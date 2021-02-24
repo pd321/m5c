@@ -12,9 +12,11 @@ rule fastqc:
 
 rule trimgalore:
     input:
-        get_fastqs
+        r1_raw_fq = lambda wildcards: get_fastqs(wildcards, "r1"),
+        r2_raw_fq = lambda wildcards: get_fastqs(wildcards, "r2")
     output:
-        temp(["results/bam/{sample}_val_1.fq.gz", "results/bam/{sample}_val_2.fq.gz"])
+        r1_filtered_fq = temp("results/bam/{sample}_val_1.fq.gz"),
+        r2_filtered_fq = temp("results/bam/{sample}_val_2.fq.gz")
     log:
         "logs/trimgalore/{sample}.log"
     conda:
@@ -27,4 +29,4 @@ rule trimgalore:
         '--cores {threads} '
         '--basename {wildcards.sample} '
         '--paired --no_report_file '
-        '{input[0]} {input[1]} 2>&1 | tee {log}'
+        '{input.r1_raw_fq} {input.r2_raw_fq} 2>&1 | tee {log}'

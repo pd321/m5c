@@ -16,5 +16,5 @@ max_threads = config['threads']
 def get_individual_fastq(wildcards):
     return samples.loc[(wildcards.sample),(wildcards.read)]
 
-def get_fastqs(wildcards):
-    return samples.loc[(wildcards.sample), ["r1", "r2"]]
+def get_fastqs(wildcards, read):
+    return samples.loc[(wildcards.sample), (read)]

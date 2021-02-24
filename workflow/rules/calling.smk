@@ -5,6 +5,8 @@ rule meRanCall:
         "results/calls/{sample}.txt"
     log:
         "logs/meRanCall/{sample}.log"
+    conda:
+        "../envs/merantk.yaml"
     threads: max_threads
     params:
         transcript_fasta = config['meRanCall']['transcript_fasta']
