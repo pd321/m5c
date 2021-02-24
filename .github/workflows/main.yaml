@@ -27,8 +27,9 @@ jobs:
         snakefile: workflow/Snakefile
         args: "--use-conda --show-failed-logs -j 2 --conda-cleanup-pkgs"
         stagein: |
+          sudo apt-get install unzip
           unzip .test/resources/meRanTK_executable/meRanTK-1.2.1b.zip -d /tmp/
-          export $PATH=PATH:/tmp/meRanTK-1.2.1b/:/tmp/meRanTK-1.2.1b/util/:/tmp/meRanTK-1.2.1b/extutil/
+          export $PATH=$PATH:/tmp/meRanTK-1.2.1b/:/tmp/meRanTK-1.2.1b/util/:/tmp/meRanTK-1.2.1b/extutil/
           mkdir -p .test/resources/mkbsidx .test/resources/id2gene
           meRanT mkbsidx -fa .test/resources/fa/mm10.refSeqRNA-noPRED.500.fa -id .test/resources/mkbsidx/
           mkRefSeq2GeneMap.pl -f .test/resources/fa/mm10.refSeqRNA-noPRED.500.fa -m .test/resources/id2gene/mm10.refSeqRNA-noPRED.500.t2g.map
