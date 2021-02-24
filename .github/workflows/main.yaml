@@ -26,10 +26,10 @@ jobs:
         directory: .test
         snakefile: workflow/Snakefile
         args: "--use-conda --show-failed-logs -j 2 --conda-cleanup-pkgs"
-        stagein: '
-        wget -O /tmp/meRanTK-1.2.1b.zip https://icbi.i-med.ac.at/software/meRanTK/downloads/1.2.1b/meRanTK-1.2.1b.zip
-        unzip /tmp/meRanTK-1.2.1b.zip -d /tmp/
-        export $PATH=PATH:/tmp/meRanTK-1.2.1b/:/tmp/meRanTK-1.2.1b/util/:/tmp/meRanTK-1.2.1b/extutil/
-        meRanT mkbsidx -fa .test/resources/fa/mm10.refSeqRNA-noPRED.500.fa -id .test/resources/mkbsidx/
-        mkRefSeq2GeneMap.pl -f .test/resources/fa/mm10.refSeqRNA-noPRED.500.fa -m .test/resources/id2gene/mm10.refSeqRNA-noPRED.500.t2g.map
-        ' 
+        stagein: |
+          wget -O /tmp/meRanTK-1.2.1b.zip https://icbi.i-med.ac.at/software/meRanTK/downloads/1.2.1b/meRanTK-1.2.1b.zip
+          unzip /tmp/meRanTK-1.2.1b.zip -d /tmp/
+          export $PATH=PATH:/tmp/meRanTK-1.2.1b/:/tmp/meRanTK-1.2.1b/util/:/tmp/meRanTK-1.2.1b/extutil/
+          meRanT mkbsidx -fa .test/resources/fa/mm10.refSeqRNA-noPRED.500.fa -id .test/resources/mkbsidx/
+          mkRefSeq2GeneMap.pl -f .test/resources/fa/mm10.refSeqRNA-noPRED.500.fa -m .test/resources/id2gene/mm10.refSeqRNA-noPRED.500.t2g.map
+        
