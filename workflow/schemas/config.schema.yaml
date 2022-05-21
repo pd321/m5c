@@ -1,9 +1,8 @@
-$schema: "http://json-schema.org/draft-04/schema#"
+$schema: "http://json-schema.org/draft-06/schema#"
 
 description: snakemake configuration file
 
 type: object
-
 # possible entries of the config file and which type they should be
 properties:
   samples:
@@ -13,16 +12,20 @@ properties:
   meRanT:
     type: object
     properties:
-      id2gene:
-        type: string
-      bsidx:
-        type: string
+      index:
+        type: object
+        properties:
+          transcript_fa_url: string
   meRanCall:
     type: object
     properties:
-      transcript_fasta: 
-        type: string
+      seq_context_around_meth_c: integer
+      min_methlyation_rate: number
 
 # entries that have to be in the config file for successful validation
 required:
   - samples
+  - threads
+  - meRanT
+  - meRanCall
+

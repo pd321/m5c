@@ -29,4 +29,4 @@ rule trimgalore:
         '--cores {threads} '
         '--basename {wildcards.sample} '
         '--paired --no_report_file '
-        '{input.r1_raw_fq} {input.r2_raw_fq} 2>&1 | tee {log}'
+        '{input.r1_raw_fq} {input.r2_raw_fq} 2>&1 {log}'

@@ -1,19 +1,21 @@
 rule meRanCall:
     input:
-        rules.meRanT.output.bam
+        merant_bam = rules.meRanT.output.bam,
+        transcript_fa = rules.get_transcript_fa.output.transcripts_fa
     output:
         "results/calls/{sample}.txt"
     log:
         "logs/meRanCall/{sample}.log"
-    conda:
-        "../envs/merantk.yaml"
     threads: max_threads
     params:
-        transcript_fasta = config['meRanCall']['transcript_fasta']
+        seq_context_around_meth_c = config['meRanCall']['seq_context_around_meth_c'],
+        min_methlyation_rate = config['meRanCall']['min_methlyation_rate']
     shell:
         'meRanCall '
-        '-sam {input} '
-        '-result {output} '
-        '-fasta {params.transcript_fasta} '
+        '-seqContext {params.seq_context_around_meth_c} '
+        '-minMethR {params.min_methlyation_rate} '
+        '-fasta {input.transcript_fa} '
+        '-procs {threads} '
         '-transcriptDBref '
-        '-procs {threads}'
+        '-bam {input.merant_bam} '
+        '-result {output} 2>&1 {log}'

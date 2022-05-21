@@ -2,9 +2,40 @@ samples: "config/samples.tsv"
 
 threads: 2
 
+# meRanT aligns directed/strand‐specific RNA‐BSseq reads to a reference transcriptome e.g. to fasta
+# sequences from the NCBI refSeq database. To do so, meRanT first needs to bisulfite convert the
+# reference database and generate the corresponding database index. This bisulfite conversion and
+# index generation has only to be performed the first time one uses a specific reference, for all
+# following runs that use the same reference transcriptome the bisulfite index can be reused.
 meRanT:
-  id2gene: "path/to/id2gene"
-  bsidx: "path/to/bsidx"
+  index:
+    # Provide URL to the .fasta file that will be used as index for meRanT.
+    # e.g. https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M25/gencode.vM25.transcripts.fa.gz
+    transcript_fa_url: "https://"
 
+#meRanCall is a flexible tool capable of multiprocessing that aims to extract the methylation state of
+# individual cytosines from mapping results produced by meRanT or meRanG (SAM or BAM files, where
+# SAM files will automatically be converted into sorted BAM files).
+# Methylated cytosines are called based on user supplied thresholds, such as minimum read coverage,
+# minimum non‐conversion rate and minimum base quality. Potential PCR duplicates may be filtered
+# by defining a maximum allowed number of identical reads (same‐ start coordinate, SAM flag and
+# CIGAR string) and potential biased read ends, as determined through the inspection of the M‐bias
+# plots, may be excluded from the analysis. If control sequences are included in the data set,
+# meRanCall can determine the overall C→T conversion rate of an experiment, which can then be used
+# for calculating the p‐value of the methylation state (Lister et al., 2009) and the p‐value of the
+# methylation rate (Barturen et al., 2013) for each “methylated” cytosine. Besides these p‐values
+# meRanCall calculates coverage, C count, methylation rate, 95% confidence intervals and mutation
+# rate. In addition to these metrics, meRanCall reports information about the position, strand,
+# reference base and the sequence context around the methylated cytosine. For alignments obtained
+# from meRanT, associated gene names are reported along with the methylation state data. All data
+# are stored in a simple tab delimited file ready for further analysis.
 meRanCall:
-  transcript_fasta: "path/to/transcript.fasta"
+  # If set to a number, this number of bases 5' and 3' of
+  #  the methylated C will be displayed in the result file.
+  #  (default: not set) 
+  seq_context_around_meth_c: 10
+  # Minimum methylation ratio of a single C, that is
+  #  needed to consider this C as potentially methylated
+  #  (default: 0.2)
+  min_methlyation_rate: 0.1
+

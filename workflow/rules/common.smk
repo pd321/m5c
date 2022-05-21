@@ -4,7 +4,7 @@ import pandas as pd
 ##### load config and sample sheets #####
 
 configfile: "config/config.yaml"
-validate(config, schema="../schemas/config.schema.yaml")
+# validate(config, schema="../schemas/config.schema.yaml")
 
 samples = pd.read_csv(config["samples"], sep="\t").set_index("sample", drop=False)
 samples.index.names = ["sample_id"]
@@ -12,6 +12,7 @@ sample_names = samples.index.tolist()
 validate(samples, schema="../schemas/samples.schema.yaml")
 
 max_threads = config['threads']
+threads_mid = max_threads/2
 
 def get_individual_fastq(wildcards):
     return samples.loc[(wildcards.sample),(wildcards.read)]
